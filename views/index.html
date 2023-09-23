@@ -8,10 +8,13 @@
 <body>
   <h1>Inspirational Quote</h1>
   <p id="quote"></p>
+  <p id="city"></p>
   <button id="getQuote">Get Another Quote</button>
   <script>
     const quoteElement = document.getElementById('quote');
     const getQuoteButton = document.getElementById('getQuote');
+
+    const cityElement = document.getElementById('city');
 
     // Function to fetch a random inspirational quote
     const fetchQuote = async () => {
@@ -24,11 +27,22 @@
       }
     };
 
+    const getCity = async () => {
+        try {
+            const response = await fetch('/city');
+            const data = await response.json();
+            cityElement.textContent = `City: ${data.city}`;
+        } catch (error) {
+        console.error(error);
+      }
+    }
+
     // Add a click event listener to the "Get Another Quote" button
     getQuoteButton.addEventListener('click', fetchQuote);
 
     // Fetch a quote when the page loads
     fetchQuote();
+    getCity();
   </script>
 </body>
 </html>
