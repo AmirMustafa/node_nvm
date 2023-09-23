@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspiration App</title>
+</head>
+<body>
+  <h1>Inspirational Quote</h1>
+  <p id="quote"></p>
+  <button id="getQuote">Get Another Quote</button>
+  <script>
+    const quoteElement = document.getElementById('quote');
+    const getQuoteButton = document.getElementById('getQuote');
+
+    // Function to fetch a random inspirational quote
+    const fetchQuote = async () => {
+      try {
+        const response = await fetch('/quote');
+        const data = await response.json();
+        quoteElement.textContent = data.quote;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // Add a click event listener to the "Get Another Quote" button
+    getQuoteButton.addEventListener('click', fetchQuote);
+
+    // Fetch a quote when the page loads
+    fetchQuote();
+  </script>
+</body>
+</html>
