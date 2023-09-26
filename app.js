@@ -23,7 +23,7 @@ app.get('/quote', (req, res) => {
 });
 
 app.get('/city', (req, res) => {
-    return res.json({city: person?.address?.city});
+    return res.json({city: person?.address?.city});  // Optional Chaining
 });
 
 app.listen(port, () => {

@@ -31,7 +31,7 @@
         try {
             const response = await fetch('/city');
             const data = await response.json();
-            cityElement.textContent = `City: ${data.city}`;
+            cityElement.textContent = `City: ${data.city}`;     // Optional Chaining Node.js 14+ feature
         } catch (error) {
         console.error(error);
       }
